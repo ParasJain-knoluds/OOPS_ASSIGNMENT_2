@@ -1,43 +1,23 @@
-trait  Ordered{
-  def check(p: Person)
 
-}
-
-class Person(val name: String, val age: Int) extends Ordered {
-  def check(p: Person) {
-    if(this.name.equals(p.name)){
-      if (this.age equals(p.age)){
-        println("true | Persons Names and Age both are same");
-      }
-      else{
-        println("False | Persons Names is same but Age is not same");
-      }
-    }
-    else{
-      if (this.name.length equals(p.name.length)) {
-        println("true | Persons Name length are same");
-      }
+class Person(var name:String,var age:Int) extends Ordered[Person] {
+  def compare(that: Person): Int = {
+    this.name compare that.name match {
+      case 0 => { if(this.age.equals(that.age))
+        println("True\nName & age both are same")
       else
-      {
-        println("False | Persons Name length are not same");
+        println("False\nName are same but ages are not equal");
+        0
       }
-
+      case other => { if(this.name.length.equals(that.name.length) && this.age.equals(that.age))
+        println("True");
+      else println("false");
+        1
+      }
     }
   }
 }
-
-object Oops {
-
-  def main(args: Array[String]) {
-
-    var p1 = new Person("Paras", 22)
-    var p2 = new Person("Paras", 22)
-    p1.check(p2)
-
-
-
-
-  }
-
-
+object Person extends  App{
+  var personOne = new Person("Paras",22)
+  var personTwo = new Person("Paras",22)
+  personOne compare personTwo
 }
