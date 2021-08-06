@@ -1,0 +1,11 @@
+def check(p: Person) {
+
+  if(this.name.equals(p.name)){
+    if(this.age.equals(p.age))
+      println("Persons Names and Age of both are same")
+    else
+      println("Persons Names are same but Age is not same")
+  }
+  else
+    println("Persons Names is not same")
+}
